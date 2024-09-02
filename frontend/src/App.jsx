@@ -3,7 +3,7 @@ import AddDate from './pages/AddDate.jsx'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:2700'
+axios.defaults.baseURL = 'https://smart-bin-d25n.onrender.com'
 axios.defaults.withCredentials = true
 
 function App() {
