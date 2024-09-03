@@ -11,7 +11,7 @@ router.use(
   })
 );
 
-router.get("/", home);
-router.post("/add", addDate);
+router.get("/api", home);
+router.post("/api/add", addDate);
 
 export default router;
