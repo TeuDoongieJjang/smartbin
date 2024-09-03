@@ -28,7 +28,7 @@ const Home = () => {
         <>
           <div className="flex flex-col flex-grow w-full max-w-sm mx-auto mb-1 md:mb-4 p-3 h-fit rounded-2xl border bg-white border-white shadow-md">
             <div className="mb-2 p-3 h-fit rounded-2xl border bg-yellow-400 border-white shadow-md">
-              <h1 className="text-2xl font-bold pt-1 mb-4 text-center text-black">
+              <h1 className="text-2xl font-bold pt-1 text-center text-black">
                 SMART BIN HISTORY LOG
               </h1>
             </div>
@@ -37,10 +37,10 @@ const Home = () => {
               <table className="bg-gray-800 table-auto border w-full">
                 <thead>
                   <tr>
-                    <th className="border sm:text-xl md:tex-2xl px-2 py-1 w-fit text-white">
+                    <th className="border text-2xl px-2 py-1 w-fit text-white">
                       NO
                     </th>
-                    <th className="border sm:text-xl md:text-2xl px-2 py-1 w-full text-white">
+                    <th className="border text-2xl px-2 py-1 w-full text-white">
                       DATE TIME
                     </th>
                   </tr>
@@ -48,10 +48,10 @@ const Home = () => {
                 <tbody>
                   {trashDate.map((time, index) => (
                     <tr key={`time-${index}`} className="text-center">
-                      <td className="border sm:text-xl md:text-2xl px-2 py-1 text-white">
+                      <td className="border text-xl  px-2 py-1 text-white">
                         {index + 1}
                       </td>
-                      <td className="border text-lg sm:text-xl md:text-2xl px-2 py-1 text-white">
+                      <td className="border text-xl  px-2 py-1 text-white">
                         {time}
                       </td>
                     </tr>
