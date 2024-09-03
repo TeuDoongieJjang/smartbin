@@ -37,10 +37,10 @@ const Home = () => {
               <table className="bg-gray-800 table-auto border w-full">
                 <thead>
                   <tr>
-                    <th className="border sm:text-lg md:tex-xl px-2 py-1 w-fit text-white">
+                    <th className="border sm:text-xl md:tex-2xl px-2 py-1 w-fit text-white">
                       NO
                     </th>
-                    <th className="border sm:text-lg md:text-xl px-2 py-1 w-full text-white">
+                    <th className="border sm:text-xl md:text-2xl px-2 py-1 w-full text-white">
                       DATE TIME
                     </th>
                   </tr>
@@ -48,10 +48,10 @@ const Home = () => {
                 <tbody>
                   {trashDate.map((time, index) => (
                     <tr key={`time-${index}`} className="text-center">
-                      <td className="border sm:text-lg md:text-xl px-2 py-1 text-white">
+                      <td className="border sm:text-xl md:text-2xl px-2 py-1 text-white">
                         {index + 1}
                       </td>
-                      <td className="border text-sm sm:text-base md:text-lg px-2 py-1 text-white">
+                      <td className="border text-lg sm:text-xl md:text-2xl px-2 py-1 text-white">
                         {time}
                       </td>
                     </tr>
