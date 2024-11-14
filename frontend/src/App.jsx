@@ -5,7 +5,7 @@ import DateEdit from './pages/DateEdit.jsx'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:2700/api';
+axios.defaults.baseURL = 'https://smart-bin-d25n.onrender.com/api';
 axios.defaults.withCredentials = true;
 
 function App() {

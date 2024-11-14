@@ -7,7 +7,7 @@ const router = express.Router();
 router.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: "https://smart-bin-d25n.onrender.com",
   })
 );
 
