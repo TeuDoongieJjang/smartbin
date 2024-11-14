@@ -62,7 +62,7 @@ const Home = () => {
                             {index + 1}
                           </td>
                           <td className="border text-lg px-2 py-1 text-white">
-                              <button class="btn btn-primary font-bold h-10 min-h-10 px-0 hover:text-white hover:bg-gray-800 hover:border-gray-800 text-black bg-yellow-400 border-gray-800 shadow-md"
+                              <button class="btn btn-primary font-bold h-10 min-h-10 hover:text-white hover:bg-gray-800 hover:border-gray-800 text-black bg-yellow-400 border-gray-800 shadow-md"
                                 onClick={() => { navigate(`/api/recycleable/${index}`) }}>
                                   {time}
                               </button>
@@ -100,7 +100,7 @@ const Home = () => {
                             {index + 1}
                           </td>
                           <td className="border text-lg px-2 py-1 text-white">
-                            <button class="btn btn-primary font-bold h-10 min-h-10 px-0 hover:text-white hover:bg-gray-800 hover:border-gray-800 text-black bg-yellow-400 border-gray-800 shadow-md"
+                            <button class="btn btn-primary font-bold h-10 min-h-10 hover:text-white hover:bg-gray-800 hover:border-gray-800 text-black bg-yellow-400 border-gray-800 shadow-md"
                                 onClick={() => { navigate(`/api/nonBio/${index}`) }}>
                                   {time}
                               </button>
