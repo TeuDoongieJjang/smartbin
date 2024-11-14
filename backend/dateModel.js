@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 
 const trashDateSchema = mongoose.Schema({
-  dateTime: {
-    type: [String],
+  recycleable: {
+    type: [String]
+  },
+  nonBio: {
+    type: [String]
   }
 });
 

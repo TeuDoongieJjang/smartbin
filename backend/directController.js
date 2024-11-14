@@ -3,7 +3,7 @@ import TrashDate from "./dateModel.js";
 export const addDate = async (req, res) => {
   try {
 
-    let trashDate = await TrashDate.findOne();
+    const { bin } = req.params;
 
     const now = new Date();
 
@@ -22,18 +22,30 @@ export const addDate = async (req, res) => {
       ...options,
     }).format(now);
 
-    if (!trashDate) {
-      trashDate = new TrashDate({
-        dateTime: formattedDate
-      });
-      await trashDate.save();
-    } else {
-      trashDate.dateTime.push(formattedDate);
-      await trashDate.save();
+    let recycleableDate = await TrashDate.findOne();
+
+    let nonBioDate = await TrashDate.findOne();
+
+    if (!recycleableDate && bin == 1){
+      recycleableDate = new TrashDate({
+        recycleable: formattedDate
+      })
+      await recycleableDate.save();
+    } else if (!nonBioDate && bin == 2){
+      nonBioDate = new TrashDate({
+        nonBio: formattedDate
+      })
+      await nonBioDate.save();
+    } else  if (recycleableDate && bin == 1){
+      recycleableDate.recycleable.push(formattedDate);
+      await recycleableDate.save();
+    } else if (nonBioDate && bin == 2){
+      nonBioDate.nonBio.push(formattedDate);
+      await nonBioDate.save();
     }
 
     return res.status(200).json({
-      message: `Successfully Added Time ${trashDate}`,
+      message: `Successfully Added Time`,
     });
   } catch (error) {
     return res.status(400).json({ error: `Error in Add Date Controller error` });
@@ -42,13 +54,61 @@ export const addDate = async (req, res) => {
 
 export const home = async (req, res) => {
   try {
-    let trashDate = await TrashDate.findOne()
+    let dateTime = await TrashDate.findOne();
     return res.status(200).json({
-      dateTime: trashDate.dateTime,
+      dateTimeRecycleable: dateTime.recycleable,
+      dateTimeNonBio: dateTime.nonBio,
     });
   } catch (error) {
     return res.status(400).json({ error: `Error in View Controller ${error}` });
   }
 };
+
+export const homeEdit = async (req, res) => {
+  try {
+    const { del } = req.params;
+
+    let dateTime = await TrashDate.findOne();
+
+    if (del == "rec") {
+      await dateTime.updateOne({ $unset: { recycleable: "" } });
+    } 
+
+    if (del == "non") {
+      await dateTime.updateOne({ $unset: { nonBio: "" } });
+    }
+
+    return res.status(200).json({
+      message: "Successfully Reset Time",
+    });
+
+  } catch (error) {
+    return res.status(400).json({ error: `Error in Home Edit: ${error}` });
+  }
+}
+
+export const dateEdit = async (req, res) => {
+  try {
+    const { date, field } = req.params; 
+    const indexToRemove = parseInt(date);
+
+    let dateTime = await TrashDate.findOne();
+ 
+    await dateTime.updateOne({
+      [`${field}.${indexToRemove}`]: null
+    });
+
+    await dateTime.updateOne({
+      $pull: { [field]: null }
+    });
+
+    return res.status(200).json({
+      message: "Successfully Reset Time",
+    });
+
+  } catch (error) {
+    return res.status(400).json({ error: `Error in Date Edit: ${error}` });
+  }
+}
 
 
